@@ -11,7 +11,7 @@ func main() {
 	requestHandler := func(ctx *fasthttp.RequestCtx) {
 		for _, route := range routes {
 			if bytes.Compare(ctx.Path(), route.urlRoute) == 0 && bytes.Compare(ctx.Method(), route.routeMethod) == 0 {
-				route.routeCallback()
+				route.routeCallback(ctx)
 			}
 		}
 	}
